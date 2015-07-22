@@ -5,6 +5,7 @@ if [ -f ~/.bashrc ]; then
 . ~/.bashrc
 fi
 
+
 # User specific environment and startup programs
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin
@@ -27,5 +28,6 @@ function git_since_last_commit {
     echo "${hours_since_last_commit}h${minutes_since_last_commit}m ";
 }
 
-PS1="[\[\033[1;32m\]\w\[\033[0m\]] \[\033[0m\]\[\033[1;36m\]\$(git_branch)\[\033[0;33m\]\$(git_since_last_commit)\[\033[0m\]$ " 
+
+PS1="\[\033[38;5;214m\]⛤ \[\033[0m\]\[\033[1;33m\]\u\[\033[0m\]\[\033[38;5;120m\]: \[\033[0m\]\[\033[38;5;119m\]\w\[\033[0m\] \[\033[0m\]\[\033[1;94m\]\$(git_branch)\[\033[0;95m\]\$(git_since_last_commit)\[\033[0m\]\[\033[38;5;231m\]♘ \[\033[0m\]" 
 

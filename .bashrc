@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000000
+HISTFILESIZE=2000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -75,26 +75,32 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=always'
-    #alias dir='dir --color=always'
-    #alias vdir='vdir --color=always'
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=always'
-    alias fgrep='fgrep --color=always'
-    alias egrep='egrep --color=always'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias mv='mv -i'
-alias cp='cp -i'
-alias ptt='ssh ptt'
-alias ptt2='ssh ptt2'
-alias g++='g++ -O2'
-alias g++11='g++ -std=c++11'
-alias proxylinux5='ssh linux5 -D 7122 -Nf'
+
+#some ssh/telnet aliases
+alias diqi1='ssh laurice@112.121.87.195'
+alias work11='ssh b02902065@linux11.csie.ntu.edu.tw'
+alias ptt='telnet ptt.cc'
+alias ptt2='telnet ptt2.cc'
+
+#some cd aliases
+alias tmp='cd /tmp/laurice/'
+alias home='cd /home/laurice/'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -120,4 +126,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PS1='\[\e[1;37m\][\[\e[1;32m\]\u\[\e[1;37m\]@\[\e[1;36m\]\h\[\e[1;37m\]: \[\e[1;35m\]\w\[\e[1;37m\]]\[\e[1;33m\] \#\n\[\e[1;33m\]\$ \[\e[m\]'
+export PATH="$PATH:$HOME/gradle-2.3/bin" #Add gradle into path
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export ANDROID_HOME="$HOME/Android/Sdk" 
+export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_NDK_HOME"

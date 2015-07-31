@@ -19,6 +19,18 @@ set smartindent
 
 hi Normal guibg=none ctermbg=none
 
+"Highlight extra whitespace
+highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+match ExtraWhitespace /\s\+$/
+
+"highlight OverLength ctermbg=darkgreen
+"match OverLength /\%11v.+/
+if exists('+colorcolumn')
+    set colorcolumn=120
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>120v.\+', -1)
+endif
+
 "autocmd FileType python set tw=80 cc=+1
 autocmd FileType make set noexpandtab
 

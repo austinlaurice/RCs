@@ -20,6 +20,20 @@ set softtabstop=4
 set autoindent
 set smartindent
 
+syntax on
+
+"Highlight extra whitespace
+highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+match ExtraWhitespace /\s\+$/
+
+"highlight OverLength ctermbg=darkgreen
+"match OverLength /\%11v.+/
+if exists('+colorcolumn')
+    set colorcolumn=120
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>120v.\+', -1)
+endif
+
 "autocmd FileType python set tw=80 cc=+1
 autocmd FileType make set noexpandtab
 
@@ -51,4 +65,3 @@ autocmd FileType tex nmap <F12> <ESC>\x:w<CR>:!xelatex %<CR>
 autocmd FileType tex imap <F11> <ESC>\x:w<CR>:!gnome-open %<.pdf<CR><CR>
 autocmd FileType tex imap <F12> <ESC>\x:w<CR>:!xelatex %<CR>
 
-syntax on

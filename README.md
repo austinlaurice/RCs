@@ -1,3 +1,3 @@
 General settings
 
-source: ynchsing
+source: ynchsung
